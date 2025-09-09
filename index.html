@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Como Desbloquear Sua Conta no Mercado Livre | Marinho Mendes Advogados</title>
+  <meta name="description" content="Guia informativo: razões de bloqueio, passo a passo administrativo, canais externos (Consumidor.gov, Procon, Reclame Aqui) e quando acionar respaldo jurídico. Página em conformidade com o Prov. OAB 205/2021 e LGPD.">
+  <meta name="theme-color" content="#FFE600">
+  <style>
+    /* ===== Identidade clara – branco e amarelo (Mercado Livre) ===== */
+    :root{
+      --bg:#FFFEF6;          /* fundo claro */
+      --paper:#ffffff;        /* cartões brancos */
+      --ink:#111827;          /* texto principal (grafite) */
+      --muted:#4b5563;        /* texto auxiliar */
+      --brand:#FFE600;        /* amarelo Mercado Livre */
+      --accent:#111827;       /* grafite para contrastes */
+      --line:#e5e7eb;         /* divisórias leves */
+      --ok:#0f766e; --warn:#b45309; --danger:#b91c1c;
+      --radius:16px; --shadow:0 16px 36px rgba(17,24,39,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial;color:var(--ink);background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1160px;margin:0 auto;padding:0 18px}
+
+    /* Topbar de conformidade */
+    .topbar{border-bottom:1px solid var(--line);background:#FFE600}
+    .topbar .container{display:flex;justify-content:center;align-items:center;padding:10px 18px}
+    .topbar small{color:#111827}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(255,255,255,.92);backdrop-filter:saturate(140%) blur(8px)}
+    .brand{display:flex;align-items:center;gap:12px;padding:12px 0;position:relative}
+    .badge{width:42px;height:42px;border-radius:12px;background:var(--brand);display:grid;place-content:center;font-weight:900;color:#111827}
+    .logotype{font-weight:900}
+    .menu-btn{margin-left:auto;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#ffffff;color:#111827;border-radius:12px;padding:8px 12px;font-weight:800;cursor:pointer}
+    .menu-btn svg{width:18px;height:18px}
+    nav{margin-left:auto;display:none;gap:18px}
+    nav a{font-size:14px;color:#1f2937}
+    @media(min-width:900px){.menu-btn{display:none} nav{display:flex}}
+    nav.open{display:flex;position:absolute;top:100%;right:18px;background:#ffffff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:10px;flex-direction:column;gap:8px;z-index:60}
+
+    /* Botões */
+    .btn{border-radius:14px;padding:12px 16px;font-weight:800;cursor:pointer;border:1px solid transparent;display:inline-flex;align-items:center;gap:10px}
+    .btn.primary{background:linear-gradient(135deg,#FFE600,#ffef80);color:#111827;box-shadow:0 10px 24px rgba(255,230,0,.35)}
+    .btn.secondary{background:transparent;border-color:#11182733;color:#111827}
+    .btn.link{background:transparent;border:0;color:var(--accent)}
+    .btn:hover{transform:translateY(-1px)}
+
+    /* Hero */
+    .hero{padding:60px 0;background:linear-gradient(180deg,#FFF27A 0%,#FFF7B1 55%, #FFFBE0 100%)}
+    .wrap{display:grid;gap:28px;align-items:center}
+    @media(min-width:980px){.wrap{grid-template-columns:1.1fr .9fr;padding:20px 0}}
+    .kicker{letter-spacing:.08em;font-weight:800;text-transform:uppercase;color:var(--accent)}
+    .h1{font-size:clamp(30px,4.6vw,56px);line-height:1.05;margin:6px 0 0}
+    .lead{color:var(--muted);margin-top:10px;font-size:18px}
+    .pill{border:1px solid #FDE047;border-radius:999px;padding:6px 10px;font-size:12px;color:#374151;background:#FFF3A4}
+    .trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+    /* Cards & grids */
+    .section{scroll-margin-top:84px}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px}
+    .card > * + *{margin-top:12px}
+    .muted{color:var(--muted)}
+    .h2{font-size:clamp(22px,3.2vw,34px);margin:0}
+    .grid-3{display:grid;gap:18px;margin-top:18px}
+    @media(min-width:980px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+    .grid-2{display:grid;gap:18px;margin-top:18px}
+    @media(min-width:980px){.grid-2{grid-template-columns:repeat(2,1fr)}}
+    .list{margin:0;padding-left:20px}
+    .list li{margin:8px 0}
+
+    /* Slots de imagem com tamanhos exatos */
+    .img-slot{position:relative;display:block;width:100%;background:repeating-linear-gradient(45deg,#FFF9D1 0 14px,#FFFDE7 14px 28px);border:1px dashed var(--line);border-radius:16px;overflow:hidden}
+    .img-slot::before{content:"";display:block;aspect-ratio:4/3}
+    .ratio-16-9::before{aspect-ratio:16/9}
+    .ratio-21-9::before{aspect-ratio:21/9}
+    .ratio-7-5::before{aspect-ratio:7/5}
+    .img-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .slot-label{position:absolute;left:8px;right:8px;bottom:8px;background:rgba(17,24,39,.92);color:#ffffff;padding:6px 8px;border-radius:10px;font-size:12px;line-height:1.3}
+
+    /* Tabela/Comparativo (clean) */
+    .compare{display:grid;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#ffffff}
+    .row{display:grid;grid-template-columns:1.1fr .9fr .9fr}
+    .cell{padding:16px;border-bottom:1px solid var(--line)}
+    .head{background:rgba(255,230,0,.15);font-weight:800}
+    .cell + .cell{border-left:1px solid var(--line)}
+    @media(max-width:820px){.row{grid-template-columns:1fr}.cell + .cell{border-left:none}}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line);background:#fafafa}
+    .foot{display:grid;gap:18px}
+    @media(min-width:980px){.foot{grid-template-columns:repeat(3,1fr)}}
+
+    :focus{outline:none}
+    :focus-visible{box-shadow:0 0 0 3px rgba(255,230,0,.45)}
+  
+    /* Acentos visuais adicionais em amarelo */
+    .h2::after{content:"";display:block;width:56px;height:4px;background:var(--brand);border-radius:999px;margin-top:8px}
+    nav a:hover{background:#FFF6A6;border-radius:8px;padding:4px 6px}
+    .section.alt{background:#FFFBE6;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  </style>
+</head>
+<body>
+  <!-- Conformidade OAB/LGPD -->
+  <div class="topbar">
+    <div class="container">
+      <small>Conteúdo informativo (Provimento OAB 205/2021) • LGPD: consentimento explícito • Contato não cria relação cliente‑advogado • Não prometemos resultados</small>
+    </div>
+  </div>
+
+  <header>
+    <div class="container brand">
+      <a href="https://marinhomendes.adv.br/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit">
+        <div class="badge" aria-hidden="true" style="background:none;padding:0;width:auto;height:auto;display:flex;align-items:center;justify-content:center;">
+          <img src="img/Logo5.jpg" alt="Logo Marinho Mendes" style="width:42px;height:42px;object-fit:contain;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);background:none">
+        </div>
+        <div class="logotype">Marinho Mendes Advogados</div>
+      </a>
+      <button id="menu-btn" class="menu-btn" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+        Menu
+      </button>
+      <nav id="site-nav" aria-label="Navegação">
+        <a href="#inicio">Início</a>
+        <a href="#motivos">Por que bloqueiam</a>
+        <a href="#passos">Passo a passo</a>
+        <a href="#prevencao">Prevenção</a>
+        <a href="#juridico">Respaldo jurídico</a>
+        <a href="#faq">Dúvidas</a>
+        <a href="#avaliar">Avaliar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="container wrap">
+      <div>
+        <div class="kicker">Desbloqueio de Contas • 2025</div>
+        <h1 class="h1">Como desbloquear sua conta no Mercado Livre — direto ao ponto e com respaldo jurídico</h1>
+        <p class="lead">Bloqueios impactam finanças e operação. Com organização, comunicação correta e, quando necessário, medida judicial, é possível buscar a reativação da conta e a liberação de valores — sempre caso a caso.</p>
+        <div class="trust">
+          <span class="pill">Leitura de notificações</span>
+          <span class="pill">Suporte da plataforma</span>
+          <span class="pill">Provas e protocolos</span>
+          <span class="pill">Consumidor.gov / Procon</span>
+        </div>
+        <div class="cta" style="margin-top:16px">
+          <a class="btn primary" href="#passos">Ver passo a passo</a>
+          <a class="btn secondary" href="#avaliar">Falar com o escritório</a>
+          <a class="btn link" href="https://www.marinhomendes.adv.br/blog/desbloquear-sua-conta-no-mercado-livre/" target="_blank" rel="noopener">Ler guia no Blog</a>
+        </div>
+      </div>
+      <aside>
+        <!-- HERO IMG • Exibição 600×420px | Upload 1200×840px (2×) -->
+        <figure class="img-slot" style="max-width:600px;margin:0">
+          <img src="img/novo logo.jpeg" alt="Novo logo Marinho Mendes" loading="lazy">
+        </figure>
+      </aside>
+    </div>
+  </section>
+
+  <!-- POR QUE BLOQUEIAM -->
+  <section id="motivos" class="section alt" style="padding:52px 0">
+    <div class="container">
+      <h2 class="h2">Por que contas são bloqueadas no Mercado Livre</h2>
+      <div class="grid-3">
+        <article class="card"><strong>Políticas violadas</strong><p class="muted">Produtos proibidos, ausência de nota fiscal, informações incorretas em anúncios.</p></article>
+        <article class="card"><strong>Reputação/operacional</strong><p class="muted">Excesso de reclamações, atrasos, cancelamentos recorrentes, indisponibilidade.</p></article>
+        <article class="card"><strong>Inconsistências cadastrais</strong><p class="muted">Documentos vencidos, dados divergentes ou vínculo com contas bloqueadas.</p></article>
+      </div>
+      <p class="muted" style="margin-top:12px">Impactos emocionais e financeiros são comuns. Abordagem técnica e empática ajuda a restabelecer a operação com segurança.</p>
+    </div>
+  </section>
+
+  <!-- PASSO A PASSO -->
+  <section id="passos" class="section alt" style="padding:52px 0">
+    <div class="container">
+      <h2 class="h2">Como agir — passo a passo</h2>
+      <div class="grid-2">
+        <article class="card">
+          <ol class="list muted" style="list-style:decimal;margin-left:22px">
+            <li><b>Leia as notificações</b> para entender a causa do bloqueio e os requisitos de regularização.</li>
+            <li><b>Abra chamado no suporte</b> (mesmo com acesso limitado), anexando NF/MEI/CNPJ, contrato social e evidências.</li>
+            <li><b>Documente tudo</b>: prints, protocolos, respostas e prazos. Organize em uma pasta com datas.</li>
+            <li><b>Acione canais externos</b> se necessário: <a href="https://www.consumidor.gov.br" target="_blank" rel="noopener">Consumidor.gov.br</a>, Procon local e <a href="https://www.reclameaqui.com.br" target="_blank" rel="noopener">Reclame Aqui</a>.</li>
+          </ol>
+        </article>
+        <!-- Faixa 21:9 • Exibição ~1120×360 | Upload 2240×720 (2×) -->
+        <figure class="img-slot ratio-21-9">
+          <img src="img/mercado-livre-1-1.webp" alt="Fluxo Mercado Livre" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESPALDO JURÍDICO -->
+  <section id="juridico" class="section" style="padding:52px 0">
+    <div class="container">
+      <h2 class="h2">Quando faz sentido buscar respaldo jurídico</h2>
+      <div class="grid-2" style="align-items:start">
+        <!-- Exibição 700×500 | Upload 1400×1000 (2×) -->
+        <figure class="img-slot ratio-7-5">
+          <img src="img/assesoria.png" alt="Assessoria jurídica" loading="lazy" width="700" height="500">
+        </figure>
+        <article class="card">
+          <ul class="list muted">
+            <li><b>Notificação extrajudicial</b> bem fundamentada, após tentativas administrativas.</li>
+            <li><b>Ação de obrigação de fazer</b> com tutela de urgência, quando houver risco de dano imediato.</li>
+            <li><b>Pedido de liberação de valores</b> retidos, conforme documentação do caso.</li>
+            <li><b>Indenização</b> por prejuízos materiais e, eventualmente, morais — <i>avaliação caso a caso</i>.</li>
+          </ul>
+          <div class="card" style="background:rgba(255,230,0,.15);border:1px solid rgba(255,230,0,.45)">
+            <strong>Atenção:</strong>
+            <p class="muted" style="margin-top:6px">Existem precedentes judiciais, mas cada processo tem particularidades. <b>Não garantimos resultados</b>; análise jurídica individual é indispensável.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREVENÇÃO -->
+  <section id="prevencao" class="section alt" style="padding:52px 0">
+    <div class="container">
+      <h2 class="h2">Boas práticas para evitar novos bloqueios</h2>
+      <div class="grid-3">
+        <article class="card"><strong>Cadastro em dia</strong><p class="muted">Dados e documentos atualizados; coerência entre CNPJ, notas e anúncios.</p></article>
+        <article class="card"><strong>Políticas da plataforma</strong><p class="muted">Evite itens proibidos e descrições imprecisas. Use NF e origem lícita.</p></article>
+        <article class="card"><strong>Atendimento & logística</strong><p class="muted">Responda rápido, cumpra prazos e monitore indicadores de reputação.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section" style="padding:52px 0">
+    <div class="container">
+      <h2 class="h2">Perguntas frequentes</h2>
+      <div class="grid-2">
+        <article class="card">
+          <strong>Quanto tempo o suporte leva para responder?</strong>
+          <p class="muted">Em geral, de 24h a 7 dias. Canais externos podem acelerar, dependendo do caso.</p>
+          <strong>Preciso de advogado?</strong>
+          <p class="muted">Não é obrigatório para as etapas administrativas, mas orientação jurídica normalmente aumenta a segurança da estratégia e da documentação.</p>
+        </article>
+        <article class="card">
+          <strong>Liminar funciona?</strong>
+          <p class="muted">Pode ser concedida quando presentes urgência e probabilidade do direito. Avaliação técnica e documentos consistentes são essenciais.</p>
+          <strong>E os valores retidos?</strong>
+          <p class="muted">É possível pleitear a liberação na via administrativa e/ou judicial, conforme os elementos do caso.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM (lead) -->
+  <section id="avaliar" class="section alt" style="padding:52px 0">
+    <div class="container">
+      <h2 class="h2">Descrever o seu caso (1 minuto)</h2>
+      <p class="muted">Envio não cria relação cliente‑advogado. Consentimento LGPD é obrigatório. Não prometemos resultados. Conteúdo informativo conforme Provimento OAB 205/2021.</p>
+      <form id="lead" class="card" novalidate>
+        <div class="grid-2">
+          <div>
+            <label for="l-nome"><strong>Nome</strong></label>
+            <input id="l-nome" style="width:100%;margin-top:6px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#ffffff;color:#111827" required>
+          </div>
+          <div>
+            <label for="l-email"><strong>E‑mail</strong></label>
+            <input id="l-email" type="email" style="width:100%;margin-top:6px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#ffffff;color:#111827" required>
+          </div>
+          <div>
+            <label for="l-situacao"><strong>Situação</strong></label>
+            <select id="l-situacao" style="width:100%;margin-top:6px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#ffffff;color:#111827" required>
+              <option value="" disabled selected>Selecione…</option>
+              <option>Conta bloqueada total</option>
+              <option>Restrição parcial</option>
+              <option>Valores retidos</option>
+            </select>
+          </div>
+          <div>
+            <label for="l-urgencia"><strong>Urgência</strong></label>
+            <select id="l-urgencia" style="width:100%;margin-top:6px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#ffffff;color:#111827" required>
+              <option value="" disabled selected>Selecione…</option>
+              <option>Imediata</option>
+              <option>1 a 3 dias</option>
+              <option>4 a 7 dias</option>
+            </select>
+          </div>
+          <div style="grid-column:1/-1">
+            <label for="l-msg"><strong>Contexto (opcional)</strong></label>
+            <textarea id="l-msg" style="width:100%;margin-top:6px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;min-height:96px;background:#ffffff;color:#111827" placeholder="Ex.: tipo de bloqueio, mensagens recebidas, protocolos, medidas já tentadas"></textarea>
+          </div>
+          <label style="grid-column:1/-1;display:flex;gap:10px;align-items:flex-start" class="muted"><input id="l-lgpd" type="checkbox"> <span>Li e concordo com o tratamento de dados para finalidade de atendimento (LGPD).</span></label>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+          <div class="muted">Status: <strong id="l-status">aguardando</strong></div>
+          <div style="display:flex;gap:10px">
+            <button type="submit" class="btn primary" id="l-send" disabled>Enviar mensagem</button>
+            <a class="btn link" href="#juridico">Entender respaldo jurídico</a>
+          </div>
+        </div>
+        <div id="l-ret" class="card" style="display:none;background:rgba(255,230,0,.15);border:1px solid rgba(255,230,0,.45)"><strong>Mensagem:</strong> <span id="l-msgret" class="muted"></span></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- SOBRE O ESCRITÓRIO (com redes apenas aqui) -->
+  <section id="sobre" class="section" style="padding:52px 0">
+    <div class="container">
+      <div class="grid-2" style="align-items:start">
+        <article class="card">
+          <h2 class="h2">Marinho Mendes Sociedade de Advogados</h2>
+          <p class="muted"><strong>Quem somos:</strong> equipe com atuação consultiva e contenciosa em temas de plataformas digitais e relações de consumo, além das áreas societária e sucessória. Unimos técnica jurídica, linguagem clara e organização de provas para orientar estratégias administrativas e, quando necessário, judiciais.</p>
+          <ul class="list muted">
+            <li><b>Ética e conformidade:</b> conteúdo informativo, sem divulgação de casos, resultados ou promessas de êxito (Provimento OAB 205/2021).</li>
+            <li><b>Metodologia:</b> checklist de documentos, análise de notificações e protocolos, definição de roteiro administrativo e jurídico.</li>
+            <li><b>Atendimento:</b> presencial (Campinas/Hortolândia) e remoto em todo o Brasil, conforme o caso.</li>
+          </ul>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+            <a href="https://www.facebook.com/marinhomendesadv" target="_blank" rel="noopener" aria-label="Facebook" class="btn" style="border:1px solid var(--line);background:#ffffff"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right:6px"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S1.86 6.48 1.86 12.07c0 5.03 3.68 9.2 8.49 9.99v-7.07H7.9v-2.92h2.45V9.41c0-2.42 1.44-3.76 3.64-3.76 1.06 0 2.17.19 2.17.19v2.39h-1.22c-1.2 0-1.58.75-1.58 1.52v1.83h2.69l-.43 2.92h-2.26v7.07c4.81-.79 8.49-4.96 8.49-9.99z"/></svg>Facebook</a>
+            <a href="https://www.instagram.com/marinhomendesadv" target="_blank" rel="noopener" aria-label="Instagram" class="btn" style="border:1px solid var(--line);background:#ffffff"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right:6px"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm11.5 2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5z"/></svg>Instagram</a>
+            <a href="https://www.linkedin.com/company/14030512/admin/dashboard/" target="_blank" rel="noopener" aria-label="LinkedIn" class="btn" style="border:1px solid var(--line);background:#ffffff"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right:6px"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V23h-4V8zm7 0h3.8v2.05h.05C12.1 8.74 13.9 8 15.9 8 20 8 23 10.7 23 16.1V23h-4v-6c0-3.1-1.1-5.2-3.9-5.2-2.1 0-3.3 1.4-3.8 2.7-.2.4-.2 1-.2 1.6V23H7.5V8z"/></svg>LinkedIn</a>
+          </div>
+        </article>
+        <!-- Institucional 4:3 • Exibição 800×600 | Upload 1600×1200 (2×) -->
+        <figure class="img-slot">
+          <img src="img/contrato.png" alt="Contrato institucional" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="padding:28px 0">
+      <div class="foot">
+        <div>
+          <strong>Marinho Mendes Sociedade de Advogados</strong>
+          <p class="muted">Conteúdo informativo (OAB). Contato via formulário não cria relação cliente‑advogado. Não divulgamos casos, resultados ou promessas de êxito.</p>
+          <p class="muted">E-mail: <a href="mailto:adm@marinhomendes.adv.br">adm@marinhomendes.adv.br</a><br>Fone/Fax: (19) 3845-4946<br>WhatsApp: <a href="https://wa.me/5519974100605" target="_blank" rel="noopener">(19) 97410-0605</a></p>
+        </div>
+        <div>
+          <strong>Endereços</strong>
+          <p class="muted"><b>Campinas/SP</b><br>Av. Jose Rocha Bonfim, 214 – Bloco J, Sala 228 – Edifício Milão – Praça Capital – CEP 13080-650</p>
+          <p class="muted"><b>Hortolândia/SP</b><br>Rua Antônio Nelson Barbosa, 93 – Jardim do Bosque – CEP 13186-231</p>
+          <p class="muted">Horário: Dias úteis 08:30–18:00</p>
+        </div>
+        <div>
+          <strong>Atalhos</strong>
+          <ul class="list muted">
+            <li><a href="#passos">Passo a passo</a></li>
+            <li><a href="#prevencao">Prevenção</a></li>
+            <li><a href="#juridico">Respaldo jurídico</a></li>
+            <li><a href="#avaliar">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:10px">© <span id="year"></span> Marinho Mendes Sociedade de Advogados. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const $ = (s, r=document)=>r.querySelector(s);
+    const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
+    $('#year').textContent = new Date().getFullYear();
+
+    // Menu responsivo
+    const menuBtn = $('#menu-btn');
+    const siteNav = $('#site-nav');
+    if (menuBtn && siteNav){
+      menuBtn.addEventListener('click', ()=>{
+        const open = siteNav.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open);
+      });
+      $$('#site-nav a').forEach(a=>a.addEventListener('click', ()=>{
+        siteNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }));
+      window.addEventListener('resize', ()=>{
+        if (window.innerWidth >= 900){
+          siteNav.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded','false');
+        }
+      });
+    }
+
+    // Lead form
+    const f = { nome: $('#l-nome'), email: $('#l-email'), sit: $('#l-situacao'), urg: $('#l-urgencia'), msg: $('#l-msg'), lgpd: $('#l-lgpd') };
+    const send = $('#l-send'); const stat = $('#l-status'); const ret = $('#l-ret'); const msgret = $('#l-msgret');
+
+    function updateReady(){
+      const ready = f.nome.value && f.email.value && f.sit.value && f.urg.value && f.lgpd.checked;
+      send.disabled = !ready;
+      stat.textContent = ready ? 'pronto para enviar' : 'aguardando';
+    }
+    $$('#lead input, #lead select, #lead textarea').forEach(el=>{ el.addEventListener('input', updateReady); el.addEventListener('change', updateReady); });
+    updateReady();
+
+    $('#lead').addEventListener('submit', (e)=>{
+      e.preventDefault(); if(send.disabled) return;
+      const payload = { nome:f.nome.value, email:f.email.value, situacao:f.sit.value, urgencia:f.urg.value, msg:f.msg.value, lgpd:f.lgpd.checked, origem:'LP-ML-Desbloqueio-2025-ModeloC' };
+      console.log('lead-submission', payload); // Substitua por fetch('ENDPOINT', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
+      ret.style.display='block'; msgret.textContent='Recebido! Entraremos em contato para orientar os próximos passos administrativos e, se necessário, jurídicos. Sem promessas de resultado.';
+    });
+  </script>
+</body>
+</html>
