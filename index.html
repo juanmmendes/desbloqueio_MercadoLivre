@@ -26,11 +26,6 @@
     .container{max-width:1160px;margin:0 auto;padding:0 18px}
     .no-scroll{overflow:hidden}
 
-    /* Topbar de conformidade */
-    .topbar{border-bottom:1px solid var(--line);background:#FFE600}
-    .topbar .container{display:flex;justify-content:center;align-items:center;padding:10px 18px}
-    .topbar small{color:#111827}
-
     /* Header (reforçado para mobile) */
     header{--header-h:64px;position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(255,255,255,.92);backdrop-filter:saturate(140%) blur(8px)}
     .brand{display:flex;align-items:center;gap:12px;padding:12px 0;position:relative;min-height:var(--header-h)}
@@ -112,7 +107,8 @@
     .ratio-16-9::before{aspect-ratio:16/9}
     .ratio-21-9::before{aspect-ratio:21/9}
     .ratio-7-5::before{aspect-ratio:7/5}
-    .img-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+    .ratio-3-2::before{aspect-ratio:3/2}
+    .img-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:16px}
 
     /* === MOBILE: imagens 100% visíveis e centralizadas (sem corte) nas seções pedidas === */
     @media(max-width:700px){
@@ -130,6 +126,7 @@
         object-position:center;
         display:block;
         margin:0 auto;
+        border-radius:16px;
       }
 
       #passos .img-slot,
@@ -154,19 +151,16 @@
     .foot{
       display:grid;
       gap:18px;
-      grid-template-columns:1fr;      /* 1 coluna no mobile */
+      grid-template-columns:1fr;
       align-items:start;
     }
     .foot > div{position:relative;min-width:0}
     .foot strong, .foot h4{display:block;margin:0 0 8px;font-size:16px;line-height:1.3}
-
-    /* Até 979px: 2 colunas e "Atalhos" ocupa a linha inteira abaixo (evita colisão) */
     @media(min-width:640px){.foot{grid-template-columns:1fr 1fr}}
     @media(max-width:979.98px){
       .foot > div + div{border-top:1px solid var(--line);padding-top:12px}
-      .foot > div:last-child{grid-column:1 / -1} /* <-- força "Atalhos" a descer sozinho */
+      .foot > div:last-child{grid-column:1 / -1}
     }
-    /* Desktop: 3 colunas confortáveis */
     @media(min-width:980px){.foot{grid-template-columns:repeat(3,1fr)}}
 
     /* Mobile: centralização e listas legíveis */
@@ -190,15 +184,28 @@
     .h2::after{content:"";display:block;width:56px;height:4px;background:var(--brand);border-radius:999px;margin-top:8px}
     nav a:hover{background:#FFF6A6;border-radius:8px;padding:4px 6px}
     .section.alt{background:#FFFBE6;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+    /* Contato imediato: cards com foto otimizada e responsiva */
+    #contato-imediato .office-card{
+      display:grid;
+      grid-template-columns: 1.15fr 1.85fr; /* foto | texto */
+      gap:14px;
+      align-items:center;
+    }
+    #contato-imediato .office-card figure{margin:0}
+    #contato-imediato .office-card .img-slot{
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    @media (max-width: 720px){
+      #contato-imediato .office-card{
+        grid-template-columns:1fr; /* foto em cima, texto abaixo */
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Conformidade OAB/LGPD -->
-  <div class="topbar">
-    <div class="container">
-      <small>Conteúdo informativo (Provimento OAB 205/2021) • LGPD: consentimento explícito • Contato não cria relação cliente-advogado • Não prometemos resultados</small>
-    </div>
-  </div>
+  <!-- (REMOVIDO) Topbar de conformidade no início da página, conforme solicitado -->
 
   <header>
     <div class="container brand">
@@ -240,7 +247,6 @@
         </div>
         <div class="cta">
           <a class="btn primary" href="https://wa.me/5519974100605" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-            <!-- ícone whatsapp -->
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.52 3.47A11.81 11.81 0 0 0 12.06 0C5.5 0 .2 5.3.2 11.86c0 2.09.55 4.12 1.6 5.92L0 24l6.37-1.66a11.8 11.8 0 0 0 5.68 1.44h.01c6.56 0 11.86-5.31 11.86-11.86a11.8 11.8 0 0 0-3.4-8.45zM12.06 21.5h-.01a9.62 9.62 0 0 1-4.91-1.35l-.35-.2-3.78.98 1.01-3.68-.23-.38a9.64 9.64 0 1 1 8.27 4.63zm5.55-7.16c-.3-.15-1.77-.87-2.04-.97-.27-.1-.46-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.63.07-.3-.15-1.25-.46-2.38-1.48-.88-.78-1.48-1.74-1.65-2.04-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.59-.91-2.18-.24-.58-.48-.5-.66-.5h-.57c-.2 0-.52.08-.79.37-.27.3-1.04 1.02-1.04 2.49 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.21 5.08 4.49.71.31 1.27.5 1.7.64.71.23 1.35.2 1.86.12.57-.08 1.77-.72 2.02-1.42.25-.69.25-1.28.17-1.41-.08-.13-.27-.2-.57-.35z"/></svg>
             Falar no WhatsApp
           </a>
@@ -251,7 +257,7 @@
       </div>
       <aside>
         <figure class="img-slot" style="max-width:600px;margin:0">
-          <img src="img/novo logo.jpeg" alt="Novo logo Marinho Mendes" loading="lazy">
+          <img src="img/novo logo.jpeg" alt="Novo logo Marinho Mendes" loading="lazy" decoding="async" fetchpriority="low" width="1200" height="900">
         </figure>
       </aside>
     </div>
@@ -284,7 +290,7 @@
           </ol>
         </article>
         <figure class="img-slot ratio-21-9">
-          <img src="img/mercado-livre-1-1.webp" alt="Fluxo Mercado Livre" loading="lazy">
+          <img src="img/mercado-livre-1-1.webp" alt="Fluxo Mercado Livre" loading="lazy" decoding="async" fetchpriority="low" width="1600" height="685">
         </figure>
       </div>
     </div>
@@ -293,10 +299,10 @@
   <!-- RESPALDO JURÍDICO -->
   <section id="juridico" class="section" style="padding:52px 0">
     <div class="container">
-      <h2 class="h2">Quando faz sentido buscar respaldo jurídico? Quando você não saber por onde começar, para liberar sua conta</h2>
-      <div class="grid-2" style="align-items:start">
+      <h2 class="h2">Quando faz sentido buscar respaldo jurídico? Quando você não souber por onde começar para liberar sua conta</h2>
+    <div class="grid-2" style="align-items:start">
         <figure class="img-slot ratio-7-5">
-          <img src="img/assesoria.png" alt="Assessoria jurídica" loading="lazy" width="700" height="500">
+          <img src="img/assesoria.png" alt="Assessoria jurídica" loading="lazy" decoding="async" fetchpriority="low" width="1400" height="1000">
         </figure>
         <article class="card">
           <ul class="list muted">
@@ -398,54 +404,53 @@
     </div>
   </section>
 
-  <!-- SOBRE O ESCRITÓRIO -->
-  <section id="sobre" class="section" style="padding:52px 0">
-    <div class="container">
-      <div class="grid-2" style="align-items:start">
-        <article class="card">
-          <h2 class="h2">Marinho Mendes Sociedade de Advogados</h2>
-          <p class="muted"><strong>Quem somos:</strong> equipe com atuação consultiva e contenciosa em temas de plataformas digitais e relações de consumo, além das áreas societária e sucessória. Unimos técnica jurídica, linguagem clara e organização de provas para orientar estratégias administrativas e, quando necessário, judiciais.</p>
-          <ul class="list muted">
-            <li><b>Ética e conformidade:</b> conteúdo informativo, sem divulgação de casos, resultados ou promessas de êxito (Provimento OAB 205/2021).</li>
-            <li><b>Metodologia:</b> checklist de documentos, análise de notificações e protocolos, definição de roteiro administrativo e jurídico.</li>
-            <li><b>Atendimento:</b> presencial (Campinas/Hortolândia) e remoto em todo o Brasil, conforme o caso.</li>
-          </ul>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
-            <a href="https://www.facebook.com/marinhomendesadv" target="_blank" rel="noopener" aria-label="Facebook" class="btn" style="border:1px solid var(--line);background:#ffffff"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right:6px"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S1.86 6.48 1.86 12.07c0 5.03 3.68 9.2 8.49 9.99v-7.07H7.9v-2.92h2.45V9.41c0-2.42 1.44-3.76 3.64-3.76 1.06 0 2.17.19 2.17.19v2.39h-1.22c-1.2 0-1.58.75-1.58 1.52v1.83h2.69l-.43 2.92h-2.26v7.07c4.81-.79 8.49-4.96 8.49-9.99z"/></svg>Facebook</a>
-            <a href="https://www.instagram.com/marinhomendesadv" target="_blank" rel="noopener" aria-label="Instagram" class="btn" style="border:1px solid var(--line);background:#ffffff"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right:6px"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm11.5 2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5z"/></svg>Instagram</a>
-            <a href="https://www.linkedin.com/company/14030512/admin/dashboard/" target="_blank" rel="noopener" aria-label="LinkedIn" class="btn" style="border:1px solid var(--line);background:#ffffff"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right:6px"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V23h-4V8zm7 0h3.8v2.05h.05C12.1 8.74 13.9 8 15.9 8 20 8 23 10.7 23 16.1V23h-4v-6c0-3.1-1.1-5.2-3.9-5.2-2.1 0-3.3 1.4-3.8 2.7-.2.4-.2 1-.2 1.6V23H7.5V8z"/></svg>LinkedIn</a>
-          </div>
-        </article>
-        <figure class="img-slot">
-          <img src="img/contrato.png" alt="Contrato institucional" loading="lazy">
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTATO IMEDIATO + ENDEREÇOS (DESTAQUE) -->
+  <!-- CONTATO IMEDIATO + ENDEREÇOS (COM FOTOS OTIMIZADAS) -->
   <section id="contato-imediato" class="section alt" style="padding:52px 0">
     <div class="container">
       <h2 class="h2">Contato imediato</h2>
       <div class="grid-2">
-        <article class="card">
-          <strong>Campinas/SP</strong>
-          <p class="muted">Av. José Rocha Bonfim, 214 – Bloco J, Sala 228 – Edifício Milão – Praça Capital – CEP 13080-650</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn primary" href="https://wa.me/5519974100605" target="_blank" rel="noopener">WhatsApp</a>
-            <a class="btn secondary" href="tel:+551932090417">Ligar: (19) 3209-0417</a>
-            <a class="btn link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Av.+Jos%C3%A9+Rocha+Bonfim%2C+214%2C+Bloco+J%2C+Sala+228%2C+Edif%C3%ADcio+Mil%C3%A3o%2C+Pra%C3%A7a+Capital%2C+Campinas+SP">Como chegar</a>
+
+        <!-- CAMPINAS -->
+        <article class="card office-card">
+          <figure class="img-slot">
+            <img
+              src="img/campinas.jpg"
+              alt="Campinas — recepção/ambiente do escritório"
+              style="width:100%;height:100%;object-fit:cover;object-position:center"
+              loading="lazy" decoding="async">
+          </figure>
+          <div>
+            <strong>Campinas/SP</strong>
+            <p class="muted">Av. José Rocha Bonfim, 214 – Bloco J, Sala 228 – Edifício Milão – Praça Capital – CEP 13080-650</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn primary" href="https://wa.me/5519974100605" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn secondary" href="tel:+551932090417">Ligar: (19) 3209-0417</a>
+              <a class="btn link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Av.+Jos%C3%A9+Rocha+Bonfim%2C+214%2C+Bloco+J%2C+Sala+228%2C+Edif%C3%ADcio+Mil%C3%A3o%2C+Pra%C3%A7a+Capital%2C+Campinas+SP">Como chegar</a>
+            </div>
           </div>
         </article>
-        <article class="card">
-          <strong>Hortolândia/SP</strong>
-          <p class="muted">Rua Antônio Nelson Barbosa, 93 – Jardim do Bosque – CEP 13186-231</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn primary" href="https://wa.me/5519974100605" target="_blank" rel="noopener">WhatsApp</a>
-            <a class="btn secondary" href="tel:+551938454946">Ligar: (19) 3845-4946</a>
-            <a class="btn link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rua+Ant%C3%B4nio+Nelson+Barbosa%2C+93%2C+Jardim+do+Bosque%2C+Hortol%C3%A2ndia+SP">Como chegar</a>
+
+        <!-- HORTOLÂNDIA -->
+        <article class="card office-card">
+          <figure class="img-slot">
+            <img
+              src="img/hortolandia.jpg"
+              alt="Hortolândia — recepção do escritório"
+              style="width:100%;height:100%;object-fit:cover;object-position:center"
+              loading="lazy" decoding="async">
+          </figure>
+
+          <div>
+            <strong>Hortolândia/SP</strong>
+            <p class="muted">Rua Antônio Nelson Barbosa, 93 – Jardim do Bosque – CEP 13186-231</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn primary" href="https://wa.me/5519974100605" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn secondary" href="tel:+551938454946">Ligar: (19) 3845-4946</a>
+              <a class="btn link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rua+Ant%C3%B4nio+Nelson+Barbosa%2C+93%2C+Jardim+do+Bosque%2C+Hortol%C3%A2ndia+SP">Como chegar</a>
+            </div>
           </div>
         </article>
+
       </div>
     </div>
   </section>
@@ -460,7 +465,7 @@
         </div>
         <div>
           <strong>Endereços</strong>
-          <p class="muted"><b>Campinas/SP</b><br>Av. Jose Rocha Bonfim, 214 – Bloco J, Sala 228 – Edifício Milão – Praça Capital – CEP 13080-650</p>
+          <p class="muted"><b>Campinas/SP</b><br>Av. José Rocha Bonfim, 214 – Bloco J, Sala 228 – Edifício Milão – Praça Capital – CEP 13080-650</p>
           <p class="muted"><b>Hortolândia/SP</b><br>Rua Antônio Nelson Barbosa, 93 – Jardim do Bosque – CEP 13186-231</p>
           <p class="muted">Horário: Dias úteis 08:30–18:00</p>
         </div>
